@@ -1,4 +1,4 @@
-# JSoftware Libre course Website
+# Software Libre course Website
 
 Welcome to the source of the Sotware Libre National University course website powered by [octopress] (http://octopress.org/).
 
