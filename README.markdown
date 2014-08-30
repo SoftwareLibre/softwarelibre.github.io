@@ -1,4 +1,4 @@
-# Jean Pierre Charalambos Website
+# JSoftware Libre course Website
 
 Welcome to the source of the Sotware Libre National University course website powered by [octopress] (http://octopress.org/).
 
@@ -42,8 +42,6 @@ gem install bundler
 #edit your .bashrc to make bundler install gems locally (see: https://wiki.archlinux.org/index.php/ruby#Bundler)
 #now install the gems locally
 bundle install
-#if rake is not installed locally then
-gem install rake -v 10.1.0
 #edit $HOME/.gem/ruby/2.1.0/gems/pygments.rb-0.3.7/lib/pygments/mentos.py to make it use python2 instead of python.
 ```
 
