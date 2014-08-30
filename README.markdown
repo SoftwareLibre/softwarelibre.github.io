@@ -1,28 +1,89 @@
-## What is Octopress?
+# Jean Pierre Charalambos Website
 
-Octopress is [Jekyll](https://github.com/mojombo/jekyll) blogging at its finest.
+Welcome to the source of the Sotware Libre National University course website powered by [octopress] (http://octopress.org/).
 
-1. **Octopress sports a clean responsive theme** written in semantic HTML5, focused on readability and friendliness toward mobile devices.
-2. **Code blogging is easy and beautiful.** Embed code (with [Solarized](http://ethanschoonover.com/solarized) styling) in your posts from gists, jsFiddle or from your filesystem.
-3. **Third party integration is simple** with built-in support for Pinboard, Delicious, GitHub Repositories, Disqus Comments and Google Analytics.
-4. **It's easy to use.** A collection of rake tasks simplifies development and makes deploying a cinch.
-5. **Ships with great plug-ins** some original and others from the Jekyll community &mdash; tested and improved.
+It's pure fun to play with and should be super-easy to hack. Read on to learn how...
 
-**Note**: Octopress requires a minimum Ruby version of `1.9.3-p0`.
+## Hacking procedure
 
-## Documentation
+* Install the source
 
-Check out [Octopress.org](http://octopress.org/docs) for guides and documentation.
-It should all apply to our current stable version (found in the `master`
-branch). If this is not the case, [please submit a
-fix to our docs repo](https://github.com/octopress/docs).
+```sh
+git clone https://github.com/softwarelibre/softwarelibre.github.io.git
+cd softwarelibre.github.io
+```
 
-## Contributing
+* Setup deployment (to github pages)
 
-[![Build Status](https://travis-ci.org/imathis/octopress.png?branch=master)](https://travis-ci.org/imathis/octopress)
+```sh
+#We use a two-branching architecture (http://octopress.org/docs/deploying/github/)
+git checkout source
+git branch -v
+#Tip found here: http://weishi.github.io/blog/2013/07/24/setup-an-existing-octopress-repository-after-git-clone/
+mkdir _deploy
+cd _deploy
+git init
+git remote add -t master -f origin https://github.com/softwarelibre/softwarelibre.github.io.git
+cd ..
+```
 
-We love to see people contributing to Octopress, whether it's a bug report, feature suggestion or a pull request. At the moment, we try to keep the core slick and lean, focusing on basic blogging needs, so some of your suggestions might not find their way into Octopress. For those ideas, we started a [list of 3rd party plug-ins](https://github.com/imathis/octopress/wiki/3rd-party-plugins), where you can link your own Octopress plug-in repositories. For the future, we're thinking about ways to easier add them into our main releases.
+* (Optionally) Update to upstream
 
+```sh
+git remote add octopress https://github.com/imathis/octopress.git
+git remote -v
+git pull octopress master
+```
+
+* Complete the installation
+
+```sh
+gem install bundler
+#edit your .bashrc to make bundler install gems locally (see: https://wiki.archlinux.org/index.php/ruby#Bundler)
+#now install the gems locally
+bundle install
+#if rake is not installed locally then
+gem install rake -v 10.1.0
+#edit $HOME/.gem/ruby/2.1.0/gems/pygments.rb-0.3.7/lib/pygments/mentos.py to make it use python2 instead of python.
+```
+
+* Install the default theme
+
+```sh
+rake install
+rake generate
+rake preview
+```
+
+* To post and render the website to localhost
+
+```sh
+rake new_post["Mi caso acerca del arenque magnífico"]
+rake generate
+rake preview
+```
+
+* Deploy (to github pages)
+
+```sh
+rake deploy
+```
+
+<!---
+* If `rake deploy` fails pushing the generated source to the master branch then
+
+```sh
+git push -f --set-upstream origin master
+```
+-->
+
+* Commit and push the modified sources
+
+```sh
+git add .
+git commit -m 'your message'
+git push origin source
+```
 
 ## License
 (The MIT License)
@@ -34,8 +95,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-#### If you want to be awesome.
-- Proudly display the 'Powered by Octopress' credit in the footer.
-- Add your site to the Wiki so we can watch the community grow.
