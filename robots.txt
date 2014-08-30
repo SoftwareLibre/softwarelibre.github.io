@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://softwarelibre.github.io//sitemap.xml 
