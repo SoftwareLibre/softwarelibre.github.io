@@ -56,7 +56,7 @@ rake preview
 * To post and render the website to localhost
 
 ```sh
-rake new_post["Mi caso acerca del arenque magnífico"]
+rake new_post["Mi caso acerca del bacalao magnífico"]
 rake generate
 rake preview
 ```
